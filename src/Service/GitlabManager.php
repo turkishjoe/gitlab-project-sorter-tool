@@ -19,12 +19,27 @@ class GitlabManager
     }
 
     public function getProjects(){
-        $projects = $this->client->projects()->all();
 
-        foreach ($projects as $project){
-            var_dump($project);
+        for($page = 1; ; $page++) {
+            $projects = $this->client
+                ->users()
+                ->usersProjects($this->getCurrentUser()['id'], ['per_page' => 15, 'page' => $page]);
+            foreach ($projects as $project){
+                echo $project['web_url'] . PHP_EOL;
+            }
+            if(empty($projects)){
+                break;
+            }
         }
 
+
         return $projects;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentUser(){
+        return $this->client->users()->user();
     }
 }

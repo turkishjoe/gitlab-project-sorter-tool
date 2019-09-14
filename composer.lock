@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "01911236ad892a9a41a9c12b0450ca0e",
+    "content-hash": "bd0b7193810d9989ebed8edc9029d6b9",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -247,17 +247,11 @@
         },
         {
             "name": "m4tthumphrey/php-gitlab-api",
-            "version": "9.13.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/m4tthumphrey/php-gitlab-api.git",
-                "reference": "35c1719c9b0a87a14c76ebe7c540d7d07cdfff9e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/m4tthumphrey/php-gitlab-api/zipball/35c1719c9b0a87a14c76ebe7c540d7d07cdfff9e",
-                "reference": "35c1719c9b0a87a14c76ebe7c540d7d07cdfff9e",
-                "shasum": ""
+                "url": "https://github.com/turkishjoe/php-gitlab-api",
+                "reference": "4e02ba2e1083172f565209c43703963eb65f9642"
             },
             "require": {
                 "ext-xml": "*",
@@ -278,7 +272,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "9.12.x-dev"
+                    "dev-master": "9.14-dev"
                 }
             },
             "autoload": {
@@ -286,23 +280,27 @@
                     "Gitlab\\": "lib/Gitlab/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Gitlab\\Tests\\": "test/Gitlab/Tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Thibault Duplessis",
-                    "email": "thibault.duplessis@gmail.com",
-                    "homepage": "http://ornicar.github.com"
+                    "name": "Matt Humphrey",
+                    "homepage": "http://m4tt.io"
                 },
                 {
                     "name": "KnpLabs Team",
                     "homepage": "http://knplabs.com"
                 },
                 {
-                    "name": "Matt Humphrey",
-                    "homepage": "http://m4tt.io"
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com",
+                    "homepage": "http://ornicar.github.com"
                 }
             ],
             "description": "GitLab API client",
@@ -311,7 +309,7 @@
                 "api",
                 "gitlab"
             ],
-            "time": "2019-04-15T07:38:13+00:00"
+            "time": "2019-09-14T22:01:03+00:00"
         },
         {
             "name": "php-http/client-common",
@@ -2734,7 +2732,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "m4tthumphrey/php-gitlab-api": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Service;
+namespace App\Service\Gitlab;
 
 
 use App\Model\ProjectsResult;
 use Gitlab\Client;
 
-class GitlabManager
+class UserProjectProvider
 {
     /**
      * @var Client
@@ -23,11 +23,14 @@ class GitlabManager
      * @return array
      */
     public function getContributedProjects(){
-        $projectsResult = new ProjectsResult;
-        $projectsResult->setGrouped($this->getGroupedProjects())
-                       ->setOwned($this->getOwnedProjects());
+        $rows = array_merge(
+            $this->getOwnedProjects(),
+            $this->getGroupedProjects()
+        );
 
-        return $projectsResult;
+        //var_dump($rows);
+
+        return $rows;
     }
 
     protected function getOwnedProjects(){
@@ -78,7 +81,7 @@ class GitlabManager
                         ->projects($group['id'], ['page'=>$page]);
 
                     foreach ($projects as $project) {
-                        $result[] = $project['web_url'];
+                        $result[] = $project;
                     }
                 }
 
@@ -96,6 +99,29 @@ class GitlabManager
      */
     public function getCurrentUser(){
         return $this->client->users()->user();
+    }
+
+    public function getGroups(){
+        $groupResult = [];
+
+        $groupParams = [
+            'per_page'=>15,
+        ];
+
+        for ($groupPage = 1 ;; $groupPage++) {
+            $groupParams['page'] = $groupPage;
+            $groups = $this->client
+                ->groups()
+                ->all($groupParams);
+
+            if(empty($groups)){
+                break;
+            }
+
+            $groupResult = array_merge($groupResult, $groups);
+        }
+
+        return $groupResult;
     }
 
 }

@@ -23,7 +23,7 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    App\Service\GitlabManager:
+    App\Service\Gitlab\UserProjectProvider:
         arguments: ['@gitlab_api']
 
     # add more service definitions when explicit configuration is needed

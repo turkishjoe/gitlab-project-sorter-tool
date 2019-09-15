@@ -29,6 +29,7 @@ class ShowProjects extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->gitlabManager->getProjects();
+        //$this->gitlabManager->getProjects();
+        var_dump($this->gitlabManager->getContributedProjects());
     }
 }

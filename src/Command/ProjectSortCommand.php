@@ -8,6 +8,7 @@ use App\Service\Gitlab\UserProjectProvider;
 use App\Service\Project\ProjectManager;
 use App\Service\Project\ProjectSorter;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -25,12 +26,13 @@ class ProjectSortCommand extends Command
     protected function configure()
     {
         $this
+            ->addArgument('filename', InputArgument::REQUIRED)
             ->setName('gitlab:sort')
             ->setDescription('...');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        var_dump($this->sorter->updateProject('var/projects_input.csv'));
+        $this->sorter->updateProject($input->getArgument('filename'));
     }
 }

@@ -28,12 +28,10 @@ class UserProjectProvider
             $this->getGroupedProjects()
         );
 
-        //var_dump($rows);
-
         return $rows;
     }
 
-    protected function getOwnedProjects(){
+    public function getOwnedProjects(){
         $params = [
             'per_page'=>15,
         ];
@@ -56,7 +54,7 @@ class UserProjectProvider
         return $result;
     }
 
-    protected function getGroupedProjects(){
+    public function getGroupedProjects(){
         $groupParams = [
             'per_page'=>15,
         ];

@@ -28,7 +28,8 @@ class ProjectSortCommand extends Command
         $this
             ->addArgument('filename', InputArgument::REQUIRED)
             ->setName('gitlab:sort')
-            ->setDescription('...');
+            ->setDescription('На основе csv файла, в котором поля project_id, пусто, is_start, tags 
+                                проставляет теги для проектов');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

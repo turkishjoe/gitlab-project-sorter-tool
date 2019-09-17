@@ -25,7 +25,7 @@ class ShowGroups extends Command
     {
         $this
             ->setName('gitlab:show_groups')
-            ->setDescription('...');
+            ->setDescription('Вывод group_id, web_url');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

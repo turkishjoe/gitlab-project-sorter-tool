@@ -24,12 +24,11 @@ class ShowProjects extends Command
     {
         $this
             ->setName('gitlab:show_repo')
-            ->setDescription('...');
+            ->setDescription('Вывод project_id, web_url');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        //$this->gitlabManager->getProjects();
         $rows = $this->gitlabManager->getReport();
 
         foreach ($rows as $row){
